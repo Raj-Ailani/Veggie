@@ -9,7 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 const Footer = (props) =>{
     return(
             <div id='footer'>
-               <div className="container" >
+               <div className="container fluid" >
             <div className="row justify-content-center" id='footer-cont'>             
                 <div className="col-4 offset-1 col-sm-2">
                     <h5>Links</h5>

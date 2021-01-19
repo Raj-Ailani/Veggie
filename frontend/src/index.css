@@ -7,7 +7,8 @@ body{
   position: sticky;
   top: 0;
   z-index: 100;
-
+  background-color: white;
+margin-bottom: 50px;
 
 }
 
@@ -41,6 +42,7 @@ body{
 .nav-item{
     font-size: 15px;
     list-style-type: none;
+  
 }
 .nav-item:hover{
   color: #84c225;
@@ -66,6 +68,20 @@ body{
   font-size: 18px;
 }
 
+.thumbs-wrapper {
+  visibility: hidden;
+  
+}
+.carousel-status{
+  visibility: hidden;
+}
+
+
+
+
+
+
+
 @media(min-width:1024px){
   #header{
     margin-left: 200px;
@@ -75,15 +91,28 @@ body{
     margin-left: 200px;
     margin-right: 200px;
   }
+  .carousel-root{
+    width: 1000px;
+    margin: auto;
+  }
 }
 
-@media(max-width:425px){
- 
-#logo-cont{
 
- margin-left: auto;
- margin-right: auto;
-  
-}
 
-}
+
+
+@media(max-width:768px){
+  #logo-cont{
+
+    margin-left: auto;
+    margin-right: auto;
+     
+   }
+  #nav-items{
+    display: block;
+  }
+  .carousel-root{
+    width: 100%;
+    margin: auto;
+  }
+  }
