@@ -1,5 +1,7 @@
 body{
   margin: 0px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 #header{
@@ -68,18 +70,31 @@ margin-bottom: 50px;
   font-size: 18px;
 }
 
-.thumbs-wrapper {
-  visibility: hidden;
-  
+
+
+#advertisment{
+
+  width: 100%;
 }
-.carousel-status{
-  visibility: hidden;
+
+#ad-cont{
+  margin-top: 20px;
 }
 
 
+#featured-product{
+  margin-top: 50px;
+}
+#featured-product h2{
+  text-align: center;
+}
 
-
-
+#all-products{
+  margin-top: 50px;
+}
+#all-products h2{
+  text-align: center;
+}
 
 
 @media(min-width:1024px){
@@ -95,6 +110,11 @@ margin-bottom: 50px;
     width: 1000px;
     margin: auto;
   }
+}
+
+#cardimg{
+width: 100px;
+height: auto;
 }
 
 
@@ -115,4 +135,20 @@ margin-bottom: 50px;
     width: 100%;
     margin: auto;
   }
+
+  
+  }
+
+  @media(max-width:425px){
+    #ad-cont{
+      padding-left: 0px;
+      padding-right: 0px;
+      
+    }
+    #advertisment{
+      height: 50px;
+    }
+    #cardimg{
+      width: 100%;
+    }
   }

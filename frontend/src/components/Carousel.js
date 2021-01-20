@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 
 const Caro =() => {
 return(
-<Carousel autoPlay infiniteLoop>
+<Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
     <div>
       <img alt="" src="/assets/11.webp" />
     </div>

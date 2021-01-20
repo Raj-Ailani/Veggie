@@ -24,7 +24,7 @@ const Header = (props) =>{
 
                  <Collapse isOpen={isNavOpen} navbar>
                      <Nav id='nav-items' className='ml-auto'><NavItem >
-                        <NavLink className="nav-item" to="/cart"> Cart &ensp;<i className="fa fa-shopping-basket" /></NavLink>
+                        <NavLink className="nav-item" to="/cart"> Basket &ensp;<i className="fa fa-shopping-basket" /></NavLink>
                         </NavItem>
                         <NavItem >
                         <NavLink className="nav-item" to="/cart"> Sign In &ensp;<i className="fa fa-user" /></NavLink>
