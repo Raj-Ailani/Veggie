@@ -2,6 +2,7 @@ body{
   margin: 0px;
   margin-left: 200px;
   margin-right: 200px;
+  
 }
 
 #header{
@@ -89,10 +90,11 @@ margin-bottom: 50px;
   text-align: center;
 }
 
-#all-products{
+
+#all-product{
   margin-top: 50px;
 }
-#all-products h2{
+#all-product h2{
   text-align: center;
 }
 
@@ -113,9 +115,73 @@ margin-bottom: 50px;
 }
 
 #cardimg{
-width: 100px;
+width: 100%;
 height: auto;
+
 }
+
+#product-card{
+  margin-right: 10px;
+
+  text-decoration: none;
+ 
+}
+
+#card-img{
+  align-items: center;
+}
+
+#card-add-btn button{
+  width: 100%;
+  font-size: 15px;
+  margin-top: 5px;
+
+}
+
+#card-price{
+  font-size: 15px;
+}
+
+
+#product-card:hover{
+  border: 1px solid rgb(161, 161, 161);
+  text-decoration: none;
+}
+
+
+#card-name{
+
+  font-size: 20px;
+  text-decoration: none;
+}
+#card-name:hover{
+
+  font-size: 20px;
+  color: #84c225;
+}
+
+#mrp{
+  font-size: 12px;
+}
+
+#detail-page h1 {
+ font-size: 30px;
+}
+
+#price{
+  text-transform: none;
+}
+
+#desp p{
+ font-size: 18px;
+}
+
+#product-img{
+  width: 100%;
+}
+
+
+
 
 
 

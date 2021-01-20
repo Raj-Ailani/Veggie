@@ -5,6 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'
 import HomeScreen from '../screens/HomeScreen'
+import ProductScreen from "../screens/ProductScreen";
 
 export default class Main extends Component{
     render(){
@@ -13,6 +14,7 @@ export default class Main extends Component{
             <Header />
             <ScrollToTop />
             <Switch>
+            <Route path='/product/:id' component={ProductScreen} />
             <Route path='/' component={HomeScreen} />
             </Switch>
            <Footer/>
