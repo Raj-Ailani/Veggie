@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { Card,CardBody,CardImg, CardText, CardTitle } from 'reactstrap'
+import Rating from './Rating'
 
 const ProductCard = ({product}) => {
     return (
@@ -9,7 +10,7 @@ const ProductCard = ({product}) => {
             <CardImg src={product.image}  />
         </Link>
         <CardBody>
-            <Link to={`/product/`+product._id}>
+            <Link to={`/product/`+product._id}  style={{ textDecoration: 'none' }}>
                 <CardTitle as="div" id='product-name'><strong>
                    <b> {product.name}</b></strong>
                 </CardTitle>
@@ -18,8 +19,11 @@ const ProductCard = ({product}) => {
            <strong><br/> ₹{product.price}</strong>
             </CardText>
             <CardText as='h4' id='product-price'>
-           <strong> Pack Size</strong>
+           <strong> Pack Size:{product.packsize}</strong>
             </CardText>
+            <CardText as="div">
+                    <Rating value={product.rating} text={' ' +product.numReviews + ' reviews'} />
+                </CardText>
         </CardBody>
     </Card>
     )

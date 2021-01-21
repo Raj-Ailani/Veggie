@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import Carousel from 'react-multi-carousel';
-
+import Rating from './Rating'
 
 import { Card,CardBody,CardImg, CardText, CardTitle } from 'reactstrap'
 
@@ -69,6 +69,9 @@ const Swipe = () => {
          
                 <CardText as='h3' id='card-price'>
                <a id='mrp'> MRP</a><strong><b> ₹{product.price}</b></strong>
+                </CardText>
+                <CardText as="div">
+                    <Rating value={product.rating} text={' ' +product.numReviews + ' reviews'} />
                 </CardText>
                 <Container fluid id='card-add-btn'>
                 <button type="button" className="btn btn-warning"><b>ADD</b> &ensp; <i className='fa fa-shopping-basket'></i></button></Container>

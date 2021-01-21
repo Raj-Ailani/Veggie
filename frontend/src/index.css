@@ -182,6 +182,12 @@ height: auto;
 
 #product-name{
   font-size: 20px;
+  text-decoration: none;
+}
+#product-name:hover{
+
+  font-size: 20px;
+  color: #84c225;
 }
 
 #product-price{
@@ -192,7 +198,9 @@ height: auto;
   text-transform: none;
 }
 
-
+.rating {
+  font-size: 12px;
+}
 
 @media(max-width:768px){
   #logo-cont{

@@ -1,13 +1,25 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios'
 import Caro from '../components/Carousel'
 import Advertisment from '../components/Advertisment'
 import Swipe from '../components/Swipe'
 import { Container,Row,Col } from 'reactstrap'
-import product from '../product'
+
 import ProductCard from '../components/ProductCard'
 
 
 function HomeScreen() {
+    const [product,setProduct]=useState([])
+    useEffect(() => {
+        const fetchProducts= async()=>{
+          const{data } = await axios.get('/api/products')
+        setProduct(data)
+        }
+        fetchProducts()
+      },[])
+
+      
+
     return (
         <div>
             <Caro></Caro>

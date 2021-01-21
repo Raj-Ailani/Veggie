@@ -2,6 +2,7 @@ import React ,{useState,useEffect} from 'react'
 import axios from 'axios'
 import { Card, Col, Container, ListGroup, Row } from 'reactstrap'
 import {Image, FormControl,ListGroupItem} from 'react-bootstrap'
+import Rating from '../components/Rating'
 
 
 const ProductScreen = ({match}) => {
@@ -34,6 +35,9 @@ const ProductScreen = ({match}) => {
                             <h2>Price :<b> ₹ {product.price}</b> </h2>
                             <br/>
                             <h3>Pack Size :{product.packsize}</h3>
+                        </ListGroupItem>
+                        <ListGroupItem   className="border-right-0  border-left-0" id='price-pack' >
+                        <Rating value={product.rating} text={' ' +product.numReviews + ' reviews'} />
                         </ListGroupItem>
 
                         
