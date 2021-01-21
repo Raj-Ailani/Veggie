@@ -71,7 +71,7 @@ const Swipe = () => {
                <a id='mrp'> MRP</a><strong><b> {product.price}</b></strong>
                 </CardText>
                 <Container fluid id='card-add-btn'>
-                <button type="button" class="btn btn-warning"><b>ADD</b> &ensp; <i className='fa fa-shopping-basket'></i></button></Container>
+                <button type="button" className="btn btn-warning"><b>ADD</b> &ensp; <i className='fa fa-shopping-basket'></i></button></Container>
             </CardBody>
             </Card>
             </Link>

@@ -10,12 +10,15 @@ const ProductCard = ({product}) => {
         </Link>
         <CardBody>
             <Link to={`/product/`+product._id}>
-                <CardTitle as="div"><strong>
-                    {product.name}</strong>
+                <CardTitle as="div" id='product-name'><strong>
+                   <b> {product.name}</b></strong>
                 </CardTitle>
             </Link>
-            <CardText as='h3'>
-           <strong> ₹{product.price}</strong>
+            <CardText as='h3' id='product-price'>
+           <strong><br/> ₹{product.price}</strong>
+            </CardText>
+            <CardText as='h4' id='product-price'>
+           <strong> Pack Size</strong>
             </CardText>
         </CardBody>
     </Card>

@@ -20,7 +20,7 @@ const ProductScreen = ({match}) => {
                         <ListGroupItem className="border-right-0  border-left-0"  >
                    
                         </ListGroupItem >
-                        <ListGroupItem   className="border-right-0  border-left-0"  >
+                        <ListGroupItem   className="border-right-0  border-left-0" id='price-pack' >
                             <h2>Price :<b> ₹ {product.price}</b> </h2>
                             <br/>
                             <h3>Pack Size :500gm</h3>
@@ -34,12 +34,12 @@ const ProductScreen = ({match}) => {
                 <Col md={3}>
                     <Card>
                         <ListGroup variant='flush'>
-                            <ListGroupItem>
+                            <ListGroupItem className="border-right-0  border-left-0 border-top-0 border-bottom-0">
                                 <Row>
                                     <Col><h3>Price</h3></Col>
                                     <Col><strong><h1>₹{product.price}</h1></strong></Col>
                                 </Row>
-                                <ListGroupItem>
+                                <ListGroupItem className="border-right-0  border-left-0 border-top-0">
                                     <Row>
                                         <Col>Pack Qty:</Col>
                                         <Col>
@@ -50,7 +50,7 @@ const ProductScreen = ({match}) => {
                                     </Row>
                                 </ListGroupItem>
                                 <Container fluid id='card-add-btn'>
-                                <button type="button" class="btn btn-warning"><b>ADD</b> &ensp; <i className='fa fa-shopping-basket'></i></button></Container>
+                                <button type="button" className="btn btn-warning"><b>ADD</b> &ensp; <i className='fa fa-shopping-basket'></i></button></Container>
                             </ListGroupItem>
                            
 

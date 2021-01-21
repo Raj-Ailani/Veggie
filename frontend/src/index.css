@@ -180,10 +180,17 @@ height: auto;
   width: 100%;
 }
 
+#product-name{
+  font-size: 20px;
+}
 
+#product-price{
+  font-size: 15px;
+}
 
-
-
+#price-pack h3{
+  text-transform: none;
+}
 
 
 
