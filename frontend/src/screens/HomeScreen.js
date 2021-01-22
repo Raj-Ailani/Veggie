@@ -1,49 +1,60 @@
-import React,{useState,useEffect} from 'react'
-import axios from 'axios'
+import React,{useEffect} from 'react'
+import {useDispatch,useSelector} from 'react-redux'
+
 import Caro from '../components/Carousel'
 import Advertisment from '../components/Advertisment'
 import Swipe from '../components/Swipe'
 import { Container,Row,Col } from 'reactstrap'
-
+import {listProducts} from '../actions/productActions'
 import ProductCard from '../components/ProductCard'
-
+import Loader from '../components/Loader'
+ 
 
 function HomeScreen() {
-    const [product,setProduct]=useState([])
-    useEffect(() => {
-        const fetchProducts= async()=>{
-          const{data } = await axios.get('/api/products')
-        setProduct(data)
-        }
-        fetchProducts()
-      },[])
+    const dispatch = useDispatch()
+   const productList = useSelector(state => state.productList)
+    const {loading, error, products} = productList
 
-      
+
+    useEffect( ()=>{
+        dispatch(listProducts())
+    },[dispatch])
+
+    
 
     return (
+       
         <div>
+            
             <Caro></Caro>
             <Advertisment></Advertisment>
             <Container id='featured-product'>
+                
             <h2>Featured Products</h2>
             <Swipe />
+            
             </Container>
             <Container id='all-product'>
                 
             <h2>All Products</h2>
-            <Row>
-                    {product.map(product => (
-                       <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
-                        <ProductCard product={product}/>
-                       </Col> 
-                    ))
-                    }
-                </Row>
+          
+          
+            <Row>{ loading ? <Loader/> : products ? 
+                products.map((product) => (
+                   <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
+                    <ProductCard product={product}/>
+                   </Col> 
+                )) : <h1>No products</h1>
+                
+            
+            }</Row>
             </Container>
 
             
            
         </div>
+
+      
     )
 }
 

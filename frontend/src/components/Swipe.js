@@ -1,5 +1,6 @@
-import React, {useState,useEffect} from 'react'
-import axios from 'axios'
+import React, {useEffect} from 'react'
+import {useDispatch,useSelector} from 'react-redux'
+
 import {Link} from 'react-router-dom'
 import Carousel from 'react-multi-carousel';
 import Rating from './Rating'
@@ -7,22 +8,21 @@ import Rating from './Rating'
 import { Card,CardBody,CardImg, CardText, CardTitle } from 'reactstrap'
 
 import { Container } from 'reactstrap';
+import { listProducts } from '../actions/productActions';
+import Loader from './Loader';
 
 
 
 
 
 const Swipe = () => {
-  const [products,setProduct]=useState([])
-
+  const dispatch = useDispatch()
+  const productList = useSelector(state => state.productList)
+  const {products,loading,error} = productList
 
   useEffect(() => {
-    const fetchProducts= async()=>{
-      const{data } = await axios.get('/api/products')
-    setProduct(data)
-    }
-    fetchProducts()
-  },[])
+    dispatch(listProducts())
+  },[dispatch])
 
 
   const responsive = {
@@ -51,7 +51,7 @@ const Swipe = () => {
        
    
         <Carousel responsive={responsive}>
-       { products.map(product => (
+       {loading ? <Loader></Loader> :products ? products.map(product => (
           
             
             <Link nk to={`/product/`+product._id}  style={{ textDecoration: 'none' }}>
@@ -79,7 +79,8 @@ const Swipe = () => {
             </Card>
             </Link>
            
-       ))
+       )):
+       <h1>No Featured Products</h1>
        }
         </Carousel>
      

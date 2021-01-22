@@ -179,7 +179,13 @@ height: auto;
 #product-img{
   width: 100%;
 }
+#spinner{
+  width: 100px;
+  height: 100px;
+  margin-left:300px;
+  display: block;
 
+}
 #product-name{
   font-size: 20px;
   text-decoration: none;
@@ -202,6 +208,10 @@ height: auto;
   font-size: 12px;
 }
 
+
+
+
+
 @media(max-width:768px){
   #logo-cont{
 
@@ -209,6 +219,13 @@ height: auto;
     margin-right: auto;
      
    }
+   #spinner{
+    width: 100px;
+    height: 100px;
+    margin-left:120px;
+    display: block;
+  
+  }
   #nav-items{
     display: block;
   }
@@ -231,5 +248,12 @@ height: auto;
     }
     #cardimg{
       width: 100%;
+    }
+    #spinner{
+      width: 100px;
+      height: 100px;
+      margin-left:120px;
+      display: block;
+    
     }
   }
