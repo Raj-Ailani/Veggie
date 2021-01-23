@@ -7,7 +7,10 @@ import Rating from '../components/Rating'
 import {listProductDetail} from '../actions/productActions'
 
 
-const ProductScreen = ({match}) => {
+const ProductScreen = ({history,match}) => {
+    const [qty,setQty ] = useState(1)
+
+
    const dispatch = useDispatch()
    const productDetail=useSelector(state => state.productDetail)
    const {loading,error,product} = productDetail
@@ -16,6 +19,12 @@ const ProductScreen = ({match}) => {
         dispatch(listProductDetail(match.params.id))
 
     },[dispatch,match])
+
+    const addToCartHandler=() =>{
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
+
+
 
     return (
             <div>
@@ -54,18 +63,37 @@ const ProductScreen = ({match}) => {
                                     <Col><h3>Price</h3></Col>
                                     <Col><strong><h1>₹{product.price}</h1></strong></Col>
                                 </Row>
-                                <ListGroupItem className="border-right-0  border-left-0 border-top-0">
-                                    <Row>
+                               
+                                <Row id='qty'>
+                                    <Col>Status</Col>
+                                    <Col>{product.countInStock >0 ? 'In Stock' : 'Out of Stock'}</Col>
+                                </Row>
+                              
+                                {product.countInStock >0 &&(
+                                
+                                    <Row  id='qty'>
                                         <Col>Pack Qty:</Col>
                                         <Col>
-                                        <option></option>
+                                        <FormControl as='select' value={qty} onChange={(e)=>
+                                        setQty(e.target.value)}>
+                                            {
+                                            [...Array(product.countInStock).keys()].map((x) =>(
+                                                <option key={x + 1} value={x+1} >
+                                                    {x+1}
+                                                </option>
+                                            ))
+                                        }   
+                                        </FormControl>  
                                     
                                         
                                         </Col>
                                     </Row>
-                                </ListGroupItem>
+                             
+                            )
+
+                            }
                                 <Container fluid id='card-add-btn'>
-                                <button type="button" className="btn btn-warning"><b>ADD</b> &ensp; <i className='fa fa-shopping-basket'></i></button></Container>
+                                <button onClick={addToCartHandler} type="button" className="btn btn-warning"  disabled={product.countInStock===0}><b>ADD</b> &ensp; <i className='fa fa-shopping-basket' ></i></button></Container>
                             </ListGroupItem>
                            
 
