@@ -3,7 +3,7 @@ import {useDispatch,useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Row,Col,ListGroup,Image,Form,Button,Card, ListGroupItem, Container, FormControl,Alert} from 'react-bootstrap'
 
-import {addToCart} from '../actions/cartActions' 
+import {addToCart,removeFromCart} from '../actions/cartActions' 
 
 
 
@@ -23,6 +23,13 @@ const CartScreen = ({match,location,history}) => {
         }
         
     }, [dispatch,productId,qty])
+
+    const removeFromCartHandler=(id) =>{
+        dispatch(removeFromCart(id))
+     } 
+
+
+
     return (
         <Container className='cartPage'>
         <h1>Shopping Cart</h1>
@@ -60,7 +67,7 @@ const CartScreen = ({match,location,history}) => {
                                         </FormControl>  
                                         </Col>
                                         <Col md={2} xs={1} style={{ padding: '0px' }}> 
-                                            <Button type='button' variant='light' >
+                                            <Button type='button' variant='light' onClick={()=>removeFromCartHandler(item.product)} >
                                                 <i className='fas fa-trash' />
                                             </Button>
                                         </Col>

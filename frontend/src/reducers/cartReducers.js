@@ -25,7 +25,7 @@ export const cartReducer=(state = {cartItems:[]},
                 ...state,
                 cartItems: state.cartItems.filter(x=> x.product !==action.payload)
             }    
- 
+            
         default:
          return state
          }
