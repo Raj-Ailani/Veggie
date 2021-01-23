@@ -207,9 +207,17 @@ height: auto;
 .rating {
   font-size: 12px;
 }
+#qty{
+  font-size: 15px ;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-
-
+#qty .form-control{
+  font-size: 10px ;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 
 @media(max-width:768px){

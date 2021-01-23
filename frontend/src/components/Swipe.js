@@ -51,7 +51,7 @@ const Swipe = () => {
        
    
         <Carousel responsive={responsive}>
-       {loading ? <Loader></Loader> :products ? products.map(product => (
+       {loading ? <Loader></Loader> : products.map(product => (
           
             
             <Link nk to={`/product/`+product._id}  style={{ textDecoration: 'none' }}>
@@ -79,8 +79,8 @@ const Swipe = () => {
             </Card>
             </Link>
            
-       )):
-       <h1>No Featured Products</h1>
+       ))
+     
        }
         </Carousel>
      

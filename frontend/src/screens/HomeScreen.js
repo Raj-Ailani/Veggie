@@ -39,12 +39,12 @@ function HomeScreen() {
             <h2>All Products</h2>
           
           
-            <Row>{ loading ? <Loader/> : products ? 
+            <Row>{ loading ? <Loader/> : 
                 products.map((product) => (
                    <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
                     <ProductCard product={product}/>
                    </Col> 
-                )) : <h1>No products</h1>
+                ))  
                 
             
             }</Row>
