@@ -248,10 +248,36 @@ font-size: 15px;
 }
 
 
+#form{
+  font-size: 15px;
+  margin-top: 20px;
+}
+#form .btn{
+  font-size: 15px;
+  margin-top: 20px;
+}
 
+#form input{
+  font-size: 15px;
+}
 
+#wrong{
+  margin-top: 20px;
+  font-size: 15px;
+}
 
+#register-link{
+  font-size: 15px;
+}
 
+#nav-real{
+  display: block;
+  margin-top: 5px;
+}
+
+.dropdown-item{
+  font-size: 15px;
+}
 
 
 

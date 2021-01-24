@@ -7,6 +7,9 @@ import ScrollToTop from './ScrollToTop'
 import HomeScreen from '../screens/HomeScreen'
 import ProductScreen from "../screens/ProductScreen";
 import CartScreen from "../screens/CartScreen";
+import LoginPage from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen'
+import ProfileScreen from '../screens/ProfileScreen'
 
 export default class Main extends Component{
     render(){
@@ -16,6 +19,9 @@ export default class Main extends Component{
             <ScrollToTop />
             <Switch>
             <Route path='/cart/:id?' component={CartScreen} />
+            <Route path='/login' component={LoginPage} />
+            <Route path='/profile' component={ProfileScreen} />
+            <Route path='/register' component={RegisterScreen}/>
             <Route path='/product/:id' component={ProductScreen} />
             <Route path='/' component={HomeScreen} />
             </Switch>
