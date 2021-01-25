@@ -1,11 +1,12 @@
 import React, { Component,useState,useEffect } from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import {Form,Button,Row,Col, FormGroup, FormLabel, FormControl, Container, Alert} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
+import {Form,Button,Row,Col, FormGroup, FormLabel, FormControl, Container,Table} from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
 import { Loader } from "../components/Loader";
-
+import { Message } from '../components/Message';
 import {getUserDetail,updateUserProfile} from '../actions/userActions'
-
+import { listMyOrder} from '../actions/orderActions';
 
 const ProfileScreen = ({location,history}) =>  {
     const [email,setEmail]=useState('')
@@ -13,7 +14,7 @@ const ProfileScreen = ({location,history}) =>  {
     const [password,setPassword]=useState('')
     const [confirmpassword,setConfimPassword]=useState('')
     const [message,setMessage]=useState(null)
- 
+    const [empty,setEmpty] = useState(true)
 
     const dispatch = useDispatch()
 
@@ -28,18 +29,27 @@ const ProfileScreen = ({location,history}) =>  {
     const {success } =userUpdateProfile
 
 
+    
+    const orderListMy = useSelector(state => state.orderList)
+    const {order,loading:loadingOrders,error:errorOrders } =orderListMy
+
+
     useEffect(()=>{
         if(!userInfo){
             history.push('/login')
         }else{
             if(!user.name){
                 dispatch(getUserDetail('profile'))
+                dispatch(listMyOrder())
             }else{
                 setName(user.name)
                 setEmail(user.email)
             }
+            if(order){
+                setEmpty(false)
+            }
         }
-    },[dispatch,history,userInfo,user])
+    },[dispatch,history,userInfo,user,order])
 
     const submitHandler =(e)=>{
        
@@ -93,6 +103,43 @@ const ProfileScreen = ({location,history}) =>  {
                 </Col>
                 <Col md={9}>
                     <h2>My Orders</h2>
+                    {empty ?<Message varient='danger'>No Orders Found</Message> :loadingOrders ? <Loader /> :errorOrders? <Message varient='danger'>{errorOrders}</Message>:
+            <Table className=' table-striped table-hover table-responsive ' id='form2'>
+              
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Paid</th>
+                        <th>Delivered</th>
+                        <th></th>
+                    </tr>
+              
+                <tbody>
+                    {order.map(order=>(
+                        <tr key={order._id}>
+                            <td>{order._id}</td>
+                            <td>{order.createdAt.substring(0,10)}</td>
+                            <td>₹{order.totalPrice}</td>
+                            <td>{!order.isPaid?  (
+                                <i className='fas fa-times' style={{color:'red'}}></i>
+                            ):<i className='fas fa-check' style={{color:'lightgreen'}}></i>}</td>
+                             <td>{order.isDelivered? order.isDelivered.substring(0,10): (
+                                <i className='fas fa-times' style={{color:'red'}}></i>
+                            )}</td>
+                            <td>
+                                <LinkContainer to={`/orders/${order._id}`}>
+                                    <Button type="button"  className='btn btn-primary btn-sm'>
+                                        Details
+                                    </Button>
+                                </LinkContainer>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+            
+            }
                 </Col>
             </Row>
             </Container>

@@ -18,7 +18,7 @@ const PaymentScreen = ({history}) => {
         history.push('/shipping')
     }
     
-    const[paymentMethod,setPaymentMethod]=useState('COD')
+    const[paymentMethod,setPaymentMethod]=useState('PayPal')
     
 
 const submitHandler=(e)=>{
@@ -42,7 +42,7 @@ const submitHandler=(e)=>{
                     <FormCheck type='radio' label='Paypal or Credit Card' id='PayPal' name='paymentMethod' value='PayPal' 
                     onChange={(e)=> setPaymentMethod(e.target.value)}>  
                     </FormCheck>
-                    <FormCheck type='radio' label='Cash On Delivery(COD)' id='COD' name='paymentMethod' value='COD' checked 
+                    <FormCheck type='radio' label='Cash On Delivery(COD)' id='COD' name='paymentMethod' value='COD'  
                     onChange={(e)=> setPaymentMethod(e.target.value)}>  
                     </FormCheck>
                     
