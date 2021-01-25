@@ -10,6 +10,8 @@ import CartScreen from "../screens/CartScreen";
 import LoginPage from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen'
 import ProfileScreen from '../screens/ProfileScreen'
+import ShippingScreen from "../screens/ShippingScreen";
+import PaymentScreen from "../screens/PaymentScreen";
 
 export default class Main extends Component{
     render(){
@@ -20,6 +22,8 @@ export default class Main extends Component{
             <Switch>
             <Route path='/cart/:id?' component={CartScreen} />
             <Route path='/login' component={LoginPage} />
+            <Route path='/shipping' component={ShippingScreen}/>
+            <Route path='/payment' component={PaymentScreen}/>
             <Route path='/profile' component={ProfileScreen} />
             <Route path='/register' component={RegisterScreen}/>
             <Route path='/product/:id' component={ProductScreen} />

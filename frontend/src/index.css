@@ -279,7 +279,9 @@ font-size: 15px;
   font-size: 15px;
 }
 
-
+.form-check-label{
+  margin-left: 20px;
+}
 
 @media(max-width:768px){
   #logo-cont{
