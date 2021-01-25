@@ -12,7 +12,7 @@ import RegisterScreen from '../screens/RegisterScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import ShippingScreen from "../screens/ShippingScreen";
 import PaymentScreen from "../screens/PaymentScreen";
-
+import PlaceOrderScreen from "../screens/PlaceOrderScreen";
 export default class Main extends Component{
     render(){
         return(
@@ -24,6 +24,7 @@ export default class Main extends Component{
             <Route path='/login' component={LoginPage} />
             <Route path='/shipping' component={ShippingScreen}/>
             <Route path='/payment' component={PaymentScreen}/>
+            <Route path='/placeorder' component={PlaceOrderScreen} />
             <Route path='/profile' component={ProfileScreen} />
             <Route path='/register' component={RegisterScreen}/>
             <Route path='/product/:id' component={ProductScreen} />
