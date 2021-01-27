@@ -136,6 +136,82 @@ const getUsers= asynHandler(async(req,res) =>{
 
 
 
+//@desp   DELETE user
+//@route    DELETE /api/users/:id
+//@access   Private/ADMIN
+
+const deleteUser= asynHandler(async(req,res) =>{
+  const user =await User.findById(req.params.id)
+  
+  if(user){
+    await user.remove()
+    res.json({message: 'User Removed'})
+  }else{
+    res.status(404)
+    throw new Error('User Not Found')
+  }
+
+
+})  
+
+
+
+//@desp    GET user by id
+//@route    GET /api/users/:id
+//@access   Private/ADMIN
+
+const getUsersById= asynHandler(async(req,res) =>{
+  const user =await User.findById(req.params.id).select('-password')
+  if(user){
+    res.json(user)
+  }else{
+    res.status(404)
+    throw new Error('User Not Found')
+  }
+ 
+
+
+})
+
+
+
+//@desp    Update user 
+//@route    PUT /api/users/:id
+//@access   Private/Admin
+
+const updateUser= asynHandler(async(req,res) =>{
+
+  const user = await User.findById(req.params.id)
+
+  if(user){
+    user.name=req.body.name||user.name
+    user.email=req.body.email||user.email
+    user.isAdmin= req.body.isAdmin
+    //||user.isAdmin
+
+    const updatedUser =await user.save()
+
+    res.json({
+      _id: updatedUser._id,
+      name:updatedUser.name,
+      email:updatedUser.email,
+      isAdmin:updatedUser.isAdmin,
+ 
+  })
+
+  }else{
+    res.status(404)
+    throw new Error('Invalid Username Password')
+  }
+ 
+})
+
+
+
+
+
+
+
 
 
 
@@ -145,4 +221,7 @@ export{
     registerUser,
     updateUserProfile,
     getUsers,
+    deleteUser,
+    getUsersById,
+    updateUser,
 } 
