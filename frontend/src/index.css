@@ -296,6 +296,21 @@ font-size: 15px;
 .form-check-label{
   margin-left: 20px;
 }
+#product-list-image{
+  width: 50px;
+}
+
+#big-box{
+  width: 100%;
+  height: 200px;
+}
+
+
+
+
+
+
+
 
 @media(max-width:768px){
   #logo-cont{

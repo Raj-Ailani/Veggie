@@ -5,9 +5,9 @@ import { Container,Button,Row,Col,ListGroup,Image,Card, ListGroupItem} from 'rea
 import {useDispatch,useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loader from '../components/Loader'
-import {getOrderDetails, payOrder} from '../actions/orderActions'
+import {getOrderDetails, payOrder,deliverOrder, codPayOrder} from '../actions/orderActions'
 import { Message } from '../components/Message'
-import { ORDER_PAY_RESET } from '../constants/orderConstants'
+import { ORDER_PAY_RESET,ORDER_DELIVER_RESET } from '../constants/orderConstants'
 
 
 
@@ -17,7 +17,8 @@ const OrderScreen = ({match}) => {
 
     const [sdkReady,setSdkReady]=useState(false)
    
-
+    const userLogin =useSelector(state=> state.userLogin)
+    const {userInfo} = userLogin
     
     const orderDetails =useSelector(state => state.orderDetails)
     const {order,loading,error,paymentMethod}=orderDetails
@@ -26,6 +27,13 @@ const OrderScreen = ({match}) => {
     const {success:successPay,loading:loadingPay}=orderPay
 
 
+    const orderDeliver =useSelector(state => state.orderDeliver)
+    const {success:successDeliver,loading:loadingDeliver}=orderDeliver
+
+
+    
+    const orderCODPay =useSelector(state => state.orderCODPay)
+    const {success:successCODPay,loading:loadingCODPay}=orderCODPay
 
     useEffect(()=>{
         const addPaypalScript =async()=>{
@@ -39,8 +47,9 @@ const OrderScreen = ({match}) => {
             }
             document.body.appendChild(script)
         }   
-        if(!order || successPay){
+        if(!order || successPay || successDeliver||successCODPay){
             dispatch({type:ORDER_PAY_RESET})
+            dispatch({type:ORDER_DELIVER_RESET})
             dispatch(getOrderDetails(orderId))
         }else if(!order.isPaid){
             if(!window.paypal){
@@ -51,18 +60,27 @@ const OrderScreen = ({match}) => {
         }
     
    
-    },[dispatch,orderId,successPay,order])
+    },[dispatch,orderId,successPay,successDeliver,order,successCODPay])
 
   const successPaymentHandler =(paymentResult)=>{
     
     dispatch(payOrder(orderId,paymentResult))
   }
 
+  const deliverHandler =()=>{
+      dispatch(deliverOrder(order))
+  }
+
+  const codPayHandler=()=>{
+    dispatch(codPayOrder(order))
+  }
+
+
 
     return (
         <Container className='cartPage'>
             <h2>Order {orderId}</h2>
-             {loading ? <Loader /> : error? <Message varient='danger'>{error}</Message> : 
+             {loading ? <Loader /> : error? <div class="alert alert-danger" role="alert" id='wrong'>{error}</div> : 
                  <Row id='form'>
                  <Col md={8}>
                      <ListGroup varient='flush'>
@@ -76,7 +94,7 @@ const OrderScreen = ({match}) => {
                                 ,{order.shippingAddress.postalCode},  {order.shippingAddress.country}
                             </p>
                             {
-                                order.isDelivered  ? <div class="alert alert-success" role="alert" id='wrong'>Deliverd At {order.deleveredAt}</div>: <div class="alert alert-danger" role="alert" id='wrong'>Not Delivered </div>
+                                order.isDelivered  ? <div class="alert alert-success" role="alert" id='wrong'>Deliverd At {order.deliveredAt}</div>: <div class="alert alert-danger" role="alert" id='wrong'>Not Delivered </div>
                             }
                         </ListGroupItem>
                         <ListGroupItem  className="border-right-0  border-left-0">
@@ -148,9 +166,9 @@ const OrderScreen = ({match}) => {
                                  </Row>
                              </ListGroupItem>
                             
-
+                            
                              
-                             {!order.isPaid && order.paymentMethod==='COD'&& (
+                             {!order.isPaid && order.paymentMethod==='COD'&&  !order.isDelivered &&(
                               <ListGroupItem>
                                   
                                   <div class="alert alert-primary" role="alert" id='wrong'>  Product Will Be Deliverd Soon</div>
@@ -175,7 +193,20 @@ const OrderScreen = ({match}) => {
                               </ListGroupItem>       
                              )}
 
-                        
+                            {loadingCODPay && <Loader></Loader>}
+                            {userInfo.isAdmin && order.paymentMethod==='COD' && !order.isPaid && (
+                                <ListGroupItem><Button type='buttom' className='btn btn-block' onClick={codPayHandler}>Mark As Paid</Button></ListGroupItem>
+                            )
+
+                            }
+                            {loadingDeliver && <Loader></Loader>}
+
+                            {userInfo.isAdmin && !order.isDelivered && (
+                                <ListGroupItem><Button type='buttom' className='btn btn-block' onClick={deliverHandler}>Mark As Delivered</Button></ListGroupItem>
+                            )
+
+                            }
+                                    
 
 
                              

@@ -123,10 +123,10 @@ const ProfileScreen = ({location,history}) =>  {
                             <td>₹{order.totalPrice}</td>
                             <td>{!order.isPaid?  (
                                 <i className='fas fa-times' style={{color:'red'}}></i>
-                            ):<i className='fas fa-check' style={{color:'lightgreen'}}></i>}</td>
-                             <td>{order.isDelivered? order.isDelivered.substring(0,10): (
+                            ):<i className='fas fa-check' style={{color:'green'}}></i>}</td>
+                             <td>{!order.isDelivered?  (
                                 <i className='fas fa-times' style={{color:'red'}}></i>
-                            )}</td>
+                            ):<i className='fas fa-check' style={{color:'green'}}></i>}</td>
                             <td>
                                 <LinkContainer to={`/orders/${order._id}`}>
                                     <Button type="button"  className='btn btn-primary btn-sm'>

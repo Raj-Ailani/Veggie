@@ -43,7 +43,7 @@ const UsersListScreen = ({history}) => {
         <Container className='user-list'>
         
         <h1>Users</h1>{
-            loading ?<Loader /> :error?<Message varient='danger'>{error}</Message>:
+            loading ?<Loader /> :error? <div class="alert alert-danger" role="alert" id='wrong'>{error}</div>:
             <Table  className=' table-striped table-hover table-responsive ' id='form'>
                 <tr id='table-tr'>
                     <th>ID</th>
