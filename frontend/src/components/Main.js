@@ -1,6 +1,6 @@
 import { Component } from "react";
 import React from 'react' 
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Header from './Header'
 import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'

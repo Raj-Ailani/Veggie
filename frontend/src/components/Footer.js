@@ -1,10 +1,8 @@
-import React, { Component ,useS, useState} from 'react'
-import {useDispatch,useSelector} from 'react-redux'
-import {Nav,Navbar,NavbarBrand,NavbarToggler,Collapse, Container, NavItem} from 'reactstrap';
-import {Link, NavLink} from 'react-router-dom';
-import { NavDropdown } from 'react-bootstrap';
+import React from 'react'
 
-import { LinkContainer } from 'react-router-bootstrap';
+
+import {Link} from 'react-router-dom';
+
 
 const Footer = (props) =>{
     return(

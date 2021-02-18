@@ -6,7 +6,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loader from '../components/Loader'
 import {getOrderDetails, payOrder,deliverOrder, codPayOrder} from '../actions/orderActions'
-import { Message } from '../components/Message'
+
 import { ORDER_PAY_RESET,ORDER_DELIVER_RESET } from '../constants/orderConstants'
 
 

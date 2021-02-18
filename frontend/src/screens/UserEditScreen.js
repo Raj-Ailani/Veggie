@@ -1,6 +1,6 @@
-import React, { Component,useState,useEffect } from 'react'
-import {Link, Redirect} from 'react-router-dom'
-import {Form,Button,Row,Col, FormGroup, FormLabel, FormControl, Container,  FormCheck} from 'react-bootstrap'
+import React, { useState,useEffect } from 'react'
+import {Link} from 'react-router-dom'
+import {Form,Button, FormGroup, FormLabel, FormControl, Container,  FormCheck} from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
 import { Loader } from "../components/Loader";
 

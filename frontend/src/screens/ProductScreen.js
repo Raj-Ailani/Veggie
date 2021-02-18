@@ -1,6 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import axios from 'axios'
+
 import { Card, Col, Container, ListGroup, Row } from 'reactstrap'
 import {Image, FormControl,ListGroupItem} from 'react-bootstrap'
 import Rating from '../components/Rating'

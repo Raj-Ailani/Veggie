@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 
-import {Form,Button, FormGroup, FormLabel, FormControl, Container,Col, FormCheck} from 'react-bootstrap'
+import {Form,Button, FormGroup, FormLabel, Container,Col, FormCheck} from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
 import FormContainter from '../components/FormContainer'
 import CheckOutSteps from '../components/CheckOutSteps'
 import {savePaymentMethod } from '../actions/cartActions'
-import { Alert } from 'reactstrap'
+
 
 
 const PaymentScreen = ({history}) => {

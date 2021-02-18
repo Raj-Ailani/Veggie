@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'  
 import userRoutes from './routes/userRoutes.js' 
@@ -13,6 +14,11 @@ dotenv.config()
 connectDB()
 
   const app= express()
+  if(process.env.NODE_ENV==='develoment'){
+    app.use(morgan('dev'))
+  }
+
+
   app.use(express.json())
     app.get('/', (req,res)=>{
         res.send('API is running')

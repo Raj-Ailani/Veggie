@@ -1,7 +1,7 @@
-import React, { Component ,useS, useState} from 'react'
+import React, {useState} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {Nav,Navbar,NavbarBrand,NavbarToggler,Collapse, Container,Col, NavItem, Button} from 'reactstrap';
-import {Link, NavLink} from 'react-router-dom';
+import {Nav,Navbar,NavbarToggler,Collapse, Container, NavItem} from 'reactstrap';
+import { NavLink} from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 import {logout} from '../actions/userActions'
 
